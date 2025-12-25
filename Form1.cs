@@ -30,7 +30,7 @@ namespace Snake_Game
 
         private void InitializeGame()
         {
-            //Con ran co do dai bang 3 luc dau
+            // Con ran co do dai = 3 luc dau
             snake.Clear();
             snake.Add(new Point(5, 10));
             snake.Add(new Point(4, 10));
@@ -41,6 +41,7 @@ namespace Snake_Game
             score = 0;
             lblHighScore.Text = $"High Score: {highscore}";
         }
+        // Random vi tri qua tao
         private void GenerateFood()
         {
             int maxX = panelGame.Width / TileSize;
@@ -52,7 +53,7 @@ namespace Snake_Game
             } 
             while (snake.Contains(food));
         }
-
+        // Chuyen huong di chuyen cua con ran
         private void gameForm_KeyDown(object sender, KeyEventArgs e)
         {
             switch (e.KeyCode)
@@ -72,6 +73,7 @@ namespace Snake_Game
             }
         }
 
+        // Ve lai con ran lien tuc
         private void gameTimer_Tick(object sender, EventArgs e)
         {
             if (!gameRunning) return;
@@ -104,6 +106,7 @@ namespace Snake_Game
                 }
             }
         }
+        // Ket thuc tro choi
         private void GameOver()
         {
             gameTimer.Stop();
@@ -120,6 +123,8 @@ namespace Snake_Game
             this.Hide();
             gameOver.Show();
         }
+
+        // Logic di chuyen cua con ran
         private void MoveSnake()
         {
             Point head = snake[0];
@@ -158,6 +163,7 @@ namespace Snake_Game
             }
         }
 
+        // Ve con ran va do an
         private void panelGame_Paint(object sender, PaintEventArgs e)
         {
             Graphics g = e.Graphics;

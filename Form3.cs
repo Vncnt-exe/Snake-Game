@@ -12,6 +12,7 @@ namespace Snake_Game
 {
     public partial class gameOverForm : Form
     {
+        private bool retryLabelVisible = true;
         public gameOverForm(int highscore)
         {
             InitializeComponent();
@@ -40,6 +41,12 @@ namespace Snake_Game
             {
                 Application.Exit();
             }
+        }
+
+        private void retryBlinkingTimer_Tick(object sender, EventArgs e)
+        {
+            retryLabelVisible = !retryLabelVisible;
+            retryLabel.Visible = retryLabelVisible;
         }
     }
 }

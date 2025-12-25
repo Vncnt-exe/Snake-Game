@@ -28,9 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.lblScore = new System.Windows.Forms.Label();
             this.retryLabel = new System.Windows.Forms.Label();
             this.gameOverLabel = new System.Windows.Forms.Label();
+            this.retryBlinkingTimer = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // lblScore
@@ -67,6 +69,12 @@
             this.gameOverLabel.Text = "GAME OVER :(";
             this.gameOverLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // retryBlinkingTimer
+            // 
+            this.retryBlinkingTimer.Enabled = true;
+            this.retryBlinkingTimer.Interval = 500;
+            this.retryBlinkingTimer.Tick += new System.EventHandler(this.retryBlinkingTimer_Tick);
+            // 
             // gameOverForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -93,5 +101,6 @@
         private System.Windows.Forms.Label lblScore;
         private System.Windows.Forms.Label retryLabel;
         private System.Windows.Forms.Label gameOverLabel;
+        private System.Windows.Forms.Timer retryBlinkingTimer;
     }
 }
