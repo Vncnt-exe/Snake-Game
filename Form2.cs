@@ -41,7 +41,7 @@ namespace Snake_Game
             int rightX = (this.ClientSize.Width * 8 / 10) / TileSize;
             for (int i = 0; i < 5; i++)
             {
-                rightSnake.Add(new Point(rightX, (this.ClientSize.Height / TileSize) + 5 - i)); // Off-screen at bottom
+                rightSnake.Add(new Point(rightX, (this.ClientSize.Height / TileSize) + 5 - i));
             }
 
             leftSnakeActive = true;
