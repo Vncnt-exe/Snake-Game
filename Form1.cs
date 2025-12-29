@@ -44,16 +44,30 @@ namespace Snake_Game
         }
         // Random vi tri qua tao
         private void GenerateFood()
-        {
-            int maxX = panelGame.Width / TileSize;
-            int maxY = panelGame.Height / TileSize;
+{
+    int maxX = panelGame.Width / TileSize;
+    int maxY = panelGame.Height / TileSize;
 
-            do
+    List<Point> availablePoints = new List<Point>();
+
+    for (int x = 0; x < maxX; x++)
+    {
+        for (int y = 0; y < maxY; y++)
+        {
+            Point p = new Point(x, y);
+            if (!snake.Contains(p))
             {
-                food = new Point(random.Next(0, maxX), random.Next(0, maxY));
-            } 
-            while (snake.Contains(food));
+                availablePoints.Add(p);
+            }
         }
+    }
+
+    if (availablePoints.Count > 0)
+    {
+        int index = random.Next(availablePoints.Count);
+        food = availablePoints[index];
+    }
+}
         // Chuyen huong di chuyen cua con ran
         private void gameForm_KeyDown(object sender, KeyEventArgs e)
         {
