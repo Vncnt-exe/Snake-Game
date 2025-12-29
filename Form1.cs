@@ -20,6 +20,7 @@ namespace Snake_Game
         private Random random = new Random();
         private const int TileSize = 20;
         private bool gameRunning = true;
+        private Direction nextDirection = Direction.Right;
 
         private enum Direction { Up, Down, Left, Right }
         public gameForm()
@@ -56,20 +57,27 @@ namespace Snake_Game
         // Chuyen huong di chuyen cua con ran
         private void gameForm_KeyDown(object sender, KeyEventArgs e)
         {
+            Direction newDirection = currentDirection;
+
             switch (e.KeyCode)
             {
                 case Keys.Up when currentDirection != Direction.Down:
-                    currentDirection = Direction.Up;
+                    newDirection = Direction.Up;
                     break;
                 case Keys.Down when currentDirection != Direction.Up:
-                    currentDirection = Direction.Down;
+                    newDirection = Direction.Down;
                     break;
                 case Keys.Left when currentDirection != Direction.Right:
-                    currentDirection = Direction.Left;
+                    newDirection = Direction.Left;
                     break;
                 case Keys.Right when currentDirection != Direction.Left:
-                    currentDirection = Direction.Right;
+                    newDirection = Direction.Right;
                     break;
+            }
+
+            if (newDirection != currentDirection)
+            {
+                nextDirection = newDirection;
             }
         }
 
@@ -127,6 +135,8 @@ namespace Snake_Game
         // Logic di chuyen cua con ran
         private void MoveSnake()
         {
+            currentDirection = nextDirection;
+
             Point head = snake[0];
             Point newHead = head;
 
